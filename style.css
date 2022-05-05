@@ -8,6 +8,9 @@
   --primary: #00856f;
   --headline: #212529;
   --paragraph: #495057;
+  --brand-beige: #fffaf1;
+  --green-light: #dce9e2;
+  --nav-height: 7.2rem;
 }
 
 body {
@@ -16,34 +19,48 @@ body {
   text-align: center;
 }
 
-header {
+.wrapper {
   width: 37.5rem;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 4.1rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
 }
 
-h4 {
+header::before {
+  content: "";
+  width: 100vw;
+  height: calc(108rem + var(--nav-height));
+  background-color: var(--green-light);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header {
+  margin-top: calc(4.1rem + var(--nav-height));
+}
+
+header h4 {
   font-size: 1.4rem;
   color: var(--primary);
   margin-bottom: 1.6rem;
 }
 
-h1 {
+header h1 {
   font-size: 3.4rem;
   color: var(--headline);
   line-height: 130%;
   margin-bottom: 2.4rem;
 }
 
-p {
+header p {
   font-size: 1.8rem;
   color: var(--paragraph);
   line-height: 150%;
   margin-bottom: 3.2rem;
 }
 
-button {
+header button {
   height: 6.2rem;
   width: 26.3rem;
   background-color: var(--primary);
@@ -60,4 +77,65 @@ button {
   gap: 1.6rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+header img {
+  width: 26.4rem;
+  display: block;
+  margin-inline: auto;
+  object-position: 0 2rem;
+}
+
+.stats {
+  width: 32.7rem;
+  padding-block: 4rem;
+  margin-inline: auto;
+  background-color: var(--brand-beige);
+  border: 1px solid var(--green-light);
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.stat h3 {
+  font-size: 4.8rem;
+  color: var(--headline);
+  line-height: 130%;
+  margin-bottom: 0.4rem;
+}
+
+.stat p {
+  margin: 0;
+  color: var(--primary);
+  line-height: 150%;
+}
+
+nav {
+  display: flex;
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.scroll {
+  background-color: var(--primary);
+  width: 100vw;
+}
+
+nav.scroll svg:nth-child(1) path {
+  fill: white;
+}
+
+nav.scroll svg:nth-child(2) path {
+  stroke: white;
 }
