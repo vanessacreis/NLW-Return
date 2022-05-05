@@ -13,7 +13,7 @@
     />
     <title>DoctorCare</title>
   </head>
-  <body onscroll="onScroll()" class="menu-expanded">
+  <body onscroll="onScroll()" class="">
     <nav id="nav" class="">
       <div class="wrapper">
         <a class="logo" href="#">
@@ -78,7 +78,7 @@
 
           <ul class="social-links">
             <li>
-              <a href="https://instagram.com">
+              <a target="_blank" href="https://instagram.com">
                 <svg
                   width="24"
                   height="24"
@@ -111,7 +111,7 @@
               </a>
             </li>
             <li>
-              <a href="https://facebook.com">
+              <a target="_blank" href="https://facebook.com">
                 <svg
                   width="24"
                   height="24"
@@ -130,7 +130,7 @@
               </a>
             </li>
             <li>
-              <a href="https://youtube.com">
+              <a target="_blank" href="https://youtube.com">
                 <svg
                   width="24"
                   height="24"
@@ -158,7 +158,12 @@
           </ul>
         </div>
 
-        <button class="open-menu">
+        <button
+          aria-expanded="false"
+          aria-label="Abrir menu"
+          class="open-menu"
+          onclick="openMenu()"
+        >
           <svg
             width="40"
             height="40"
@@ -190,7 +195,12 @@
           </svg>
         </button>
 
-        <button class="close-menu">
+        <button
+          aria-expanded="true"
+          aria-label="Fechar menu"
+          class="close-menu"
+          onclick="closeMenu()"
+        >
           <svg
             width="40"
             height="40"

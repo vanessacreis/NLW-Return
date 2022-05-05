@@ -24,6 +24,7 @@ body {
   font-family: "DM Sans", sans-serif;
   font-size: 1.6rem;
   text-align: center;
+  overflow: overlay;
 }
 
 ul {
@@ -147,12 +148,22 @@ nav.scroll svg:nth-child(1) path {
   fill: white;
 }
 
-nav.scroll svg:nth-child(2) path {
+nav.scroll button path {
   stroke: white;
+}
+
+nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 body.menu-expanded {
   overflow: hidden;
+}
+
+body.menu-expanded > :not(nav) {
+  display: none;
 }
 
 .menu,
@@ -175,8 +186,60 @@ body.menu-expanded .menu {
   background-color: var(--primary);
   width: 100vw;
   height: 100vh;
+  padding: var(--nav-height);
 }
 
 body.menu-expanded nav {
   position: relative;
+}
+
+.menu ul:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.8rem;
+  margin-top: 6rem;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+}
+
+.menu ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu .button {
+  background-color: white;
+  border-radius: 4rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  margin-top: 4.8rem;
+  margin-bottom: 8rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 3.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button {
+  position: relative;
+  z-index: 10;
+}
+
+body.menu-expanded .logo path {
+  fill: white;
+}
+
+body.menu-expanded button path {
+  stroke: white;
 }
