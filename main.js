@@ -1,8 +1,23 @@
+window.addEventListener("scroll", onScroll);
+
 function onScroll() {
+  showNavOnScroll();
+  showBackToTopBTNOnScroll();
+}
+
+function showNavOnScroll() {
   if (scrollY > 0) {
     nav.classList.add("scroll");
   } else {
     nav.classList.remove("scroll");
+  }
+}
+
+function showBackToTopBTNOnScroll() {
+  if (scrollY > 400) {
+    backToTopBTN.classList.add("show");
+  } else {
+    backToTopBTN.classList.remove("show");
   }
 }
 
