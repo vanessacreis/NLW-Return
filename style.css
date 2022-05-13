@@ -12,6 +12,7 @@
   --brand-hover: #00453a;
   --brand-beige: #fffaf1;
   --green-light: #dce9e2;
+  --green-light-2: #f7f9f9;
   --bg-light: #f7f9f9;
   --nav-height: 7.2rem;
 }
@@ -106,7 +107,7 @@ section .content p {
 }
 
 .wrapper {
-  width: 37.5rem;
+  width: min(50rem, 100%);
   margin-inline: auto;
   padding-inline: 2.4rem;
 }
@@ -114,7 +115,7 @@ section .content p {
 #home::before {
   content: "";
   width: 100%;
-  height: calc(108rem + var(--nav-height));
+  height: calc(72% + var(--nav-height));
   background-color: var(--green-light);
   position: absolute;
   top: 0;
@@ -145,7 +146,7 @@ section .content p {
 }
 
 #home .stats {
-  width: 32.7rem;
+  width: 100%;
   padding-block: 4rem;
   margin-inline: auto;
   background-color: var(--brand-beige);
@@ -203,6 +204,11 @@ nav button {
   cursor: pointer;
 }
 
+nav .menu,
+nav .close-menu {
+  position: fixed;
+}
+
 body.menu-expanded {
   overflow: hidden;
 }
@@ -229,7 +235,6 @@ body.menu-expanded .close-menu {
 }
 
 body.menu-expanded .menu {
-  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--primary);
@@ -392,4 +397,184 @@ footer .social-links {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+@media (min-width: 1024px) {
+  body {
+    overflow: auto;
+  }
+
+  .wrapper {
+    width: min(112rem, 100%);
+    display: grid;
+  }
+
+  nav#nav .wrapper * {
+    margin: 0;
+    padding: 0;
+    visibility: initial;
+    opacity: initial;
+    display: initial;
+    flex-direction: initial;
+    position: initial;
+    font-size: initial;
+    transform: initial;
+    color: initial;
+    background-color: initial;
+    font-size: initial;
+    font-weight: initial;
+    filter: initial;
+  }
+
+  nav#nav .close-menu,
+  nav#nav .open-menu,
+  nav#nav .social-links {
+    display: none;
+  }
+
+  nav#nav .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  nav#nav .menu ul:nth-child(1) {
+    display: flex;
+    gap: 3.2rem;
+  }
+
+  nav#nav .menu ul li a {
+    color: var(--primary);
+    opacity: 0.7;
+  }
+
+  nav#nav .menu a.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.4rem;
+    border: 1px solid var(--primary);
+    border-radius: 4rem;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+  }
+
+  nav#nav .menu a.button:hover {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+  }
+
+  nav#nav.scroll .menu ul li a {
+    color: var(--green-light-2);
+    opacity: 0.6;
+  }
+
+  nav#nav.scroll .menu a.button {
+    border-color: white;
+    color: white;
+  }
+
+  nav#nav.scroll .menu a.button.active,
+  nav#nav.scroll .menu a.button:hover {
+    background-color: var(--primary);
+    filter: brightness(1.3);
+    border: none;
+  }
+
+  nav#nav .menu li a {
+    transition: opacity 0.4s;
+  }
+
+  nav#nav .menu li a.active,
+  nav#nav .menu li a:hover {
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  nav#nav .menu li a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    display: block;
+    position: relative;
+    bottom: -2rem;
+    left: -0.5rem;
+    transition: width 0.2s;
+  }
+
+  nav#nav.scroll .menu li a::after {
+    background-color: white;
+  }
+
+  nav#nav .menu li a.active::after,
+  nav#nav .menu li a:hover::after {
+    width: 100%;
+    padding-inline: 0.8rem;
+  }
+
+  nav#nav.scroll .menu li a.active,
+  nav#nav.scroll .menu li a:hover {
+    opacity: 1;
+  }
+
+  #home::before {
+    height: calc(86% - var(--nav-height));
+  }
+
+  #home {
+    padding: var(--nav-height);
+  }
+
+  #home .wrapper {
+    grid-template-columns: 60.5rem 1fr;
+    grid-template-areas:
+      "A B"
+      "C C";
+  }
+
+  #home .col-a {
+    grid-area: A;
+    text-align: left;
+    align-self: center;
+  }
+  #home .col-b {
+    grid-area: B;
+  }
+
+  #home h1 {
+    font-size: 5.2rem;
+  }
+
+  #home .content p {
+    font-size: 1.8rem;
+  }
+
+  #home .stats {
+    grid-area: C;
+    flex-direction: row;
+    padding: 6rem;
+    gap: 0;
+  }
+
+  #home .stats .stat + .stat {
+    border-left: 1px solid var(--primary);
+  }
+
+  #home .stats .stat {
+    flex: 1;
+  }
+
+  #home .button {
+    margin: 0;
+  }
+
+  #home img {
+    width: 42rem;
+  }
 }
